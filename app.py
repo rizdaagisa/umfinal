@@ -129,13 +129,10 @@ def user():
     nama = result['nama']
     kelas = result['kelas']
     df = pd.read_csv("DB_admin.csv")
-    c = df.head(5)
-    print(c)
-    np = df.loc[df['npm'] == str(npm)]['npm']
+    np = df.loc[df['npm'] == str(npm)]
     print(np)
     if(np.empty):
         data = create_user(nama,kelas,npm)
-        print(c)
         return data
     else:
         return {'status' : 'User sudah ada didalam database'}
