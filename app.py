@@ -169,14 +169,14 @@ def login_request():
             writer.writerow({'npm_user':npm,'nama_user':nama,'kelas_user':kelas,'matkul':matkul,'tanggal':tanggal})
         return {'status':'Sukses'}
     else:
-        return {'status' : 'Token user salah, silakan lakukan pembelian token di instagram @jokiambis'}
-
+        return {'status' : 'Token user salah, silakan lakukan pembelian token di instagram @jokiambis')
+        
 @app.route('/download_admin',methods=['GET'])
 def download_admin():
     try:
-		return send_file(path+"/DB_admin.csv", attachment_filename='DB_admin.csv')
-	except Exception as e:
-		return str(e)
+        return send_file(path+"/DB_admin.csv", attachment_filename='DB_admin.csv')
+    except Exception as e:
+        return str(e)
 
 @app.route('/download_user',methods=['GET'])
 def download_user():
