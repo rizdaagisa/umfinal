@@ -130,7 +130,8 @@ def user():
     kelas = result['kelas']
     df = pd.read_csv("DB_admin.csv")
     c = df.head(5)
-    np = df.loc[df['npm'] == npm]['npm']
+    print(c)
+    np = df.loc[df['npm'] == str(npm)]['npm']
     print(np)
     if(np.empty):
         data = create_user(nama,kelas,npm)
