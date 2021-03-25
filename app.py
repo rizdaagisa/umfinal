@@ -16,10 +16,6 @@ import shutil
 # https://github.com/matt-bertoncello/python-pyodbc-buildpack
 
 app = Flask(__name__)
-# path = os.path.dirname(__file__)
-# print(path)
-# path = path.replace("\\","/")
-# os.path.join(path + "/" + "odbc/")
 
 
 def create_user(nama,kelas,npm):
