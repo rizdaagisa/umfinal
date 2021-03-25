@@ -4,9 +4,11 @@ import hashlib
 import secrets
 import pandas as pd
 from datetime import datetime
-import re
+import re,os
 
-
+path = os.path.dirname(__file__)
+path = path.replace("\\","/")
+print(path)
 # generated_key = secrets.token_urlsafe(16)
 # generated_key.replace("-","")
 # token = "14117220" + generated_key
@@ -53,4 +55,4 @@ def create():
     result = requests.post(base+"create_user",json=data)
     print(result.json())
 
-create()
+# create()

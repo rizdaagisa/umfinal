@@ -17,6 +17,7 @@ import shutil
 
 app = Flask(__name__)
 path = os.path.dirname(__file__)
+path = path.replace("\\","/")
 
 def create_user(nama,kelas,npm):
     try:
@@ -173,7 +174,7 @@ def login_request():
 @app.route('/download_admin',methods=['GET'])
 def download_admin():
     try:
-		return send_file(path+"\DB_admin.csv", attachment_filename='DB_admin.csv')
+		return send_file(path+"/DB_admin.csv", attachment_filename='DB_admin.csv')
 	except Exception as e:
 		return str(e)
 
