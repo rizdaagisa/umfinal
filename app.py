@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request , send_file
 from flask_restful import Api, Resource, reqparse
 import pandas as pd
 import csv
@@ -16,7 +16,7 @@ import shutil
 # https://github.com/matt-bertoncello/python-pyodbc-buildpack
 
 app = Flask(__name__)
-
+path = os.path.dirname(__file__)
 
 def create_user(nama,kelas,npm):
     try:
@@ -129,8 +129,7 @@ def user():
     nama = result['nama']
     kelas = result['kelas']
     df = pd.read_csv("DB_admin.csv")
-    np = df.loc[df["npm"]  == int(npm)]['npm']
-    print(np)
+    np = df.loc[df["npm"]  == int(npm)]['npm'][0]
     if(np.empty):
         data = create_user(nama,kelas,npm)
         return data
@@ -170,6 +169,20 @@ def login_request():
         return {'status':'Sukses'}
     else:
         return {'status' : 'Token user salah, silakan lakukan pembelian token di instagram @jokiambis'}
+
+@app.route('/download_admin',methods=['GET'])
+def download_admin():
+    try:
+		return send_file(path+"/DB_admin.csv", attachment_filename='DB_admin.csv')
+	except Exception as e:
+		return str(e)
+
+@app.route('/download_user',methods=['GET'])
+def download_user():
+    try:
+		return send_file(path+"/DB_user.csv", attachment_filename='DB_user.csv')
+	except Exception as e:
+		return str(e)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
