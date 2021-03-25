@@ -169,8 +169,8 @@ def login_request():
             writer.writerow({'npm_user':npm,'nama_user':nama,'kelas_user':kelas,'matkul':matkul,'tanggal':tanggal})
         return {'status':'Sukses'}
     else:
-        return {'status' : 'Token user salah, silakan lakukan pembelian token di instagram @jokiambis')
-        
+        return {'status' : 'Token user salah, silakan lakukan pembelian token di instagram @jokiambis'}
+
 @app.route('/download_admin',methods=['GET'])
 def download_admin():
     try:
