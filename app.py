@@ -174,14 +174,14 @@ def login_request():
 @app.route('/download_admin',methods=['GET'])
 def download_admin():
     try:
-        return send_file(path+"/DB_admin.csv",as_attachment=True)
+        return send_file("DB_admin.csv",as_attachment=True)
     except Exception as e:
         return str(e)
 
 @app.route('/download_user',methods=['GET'])
 def download_user():
     try:
-        return send_file(path+"/DB_user.csv", as_attachment=True)
+        return send_file("DB_user.csv", as_attachment=True)
     except Exception as e:
         return str(e)
 
